@@ -19,5 +19,9 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = bindingInflater.invoke(layoutInflater)
         setContentView(_binding.root)
+
+        setup()
     }
+
+    open fun setup() {}
 }
