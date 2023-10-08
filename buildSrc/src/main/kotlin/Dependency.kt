@@ -42,6 +42,10 @@ object Dependency {
         const val rxRetrofitAdapter = "com.squareup.retrofit2:adapter-rxjava3:${Versions.Core.rxJavaAdapter}"
     }
 
+    object Coroutines {
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines.core}"
+    }
+
     object Hilt {
         const val hilt = "com.google.dagger:hilt-android:${Versions.Core.hiltVersion}"
         const val compiler = "com.google.dagger:hilt-android-compiler:${Versions.Core.hiltVersion}"
@@ -61,6 +65,12 @@ object Dependency {
     object AndroidTest {
         const val junit = "androidx.test.ext:junit:${Versions.AndroidTest.jUnitVersion}"
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.AndroidTest.espressoVersion}"
+    }
+
+    object WorkManager {
+        const val core = "androidx.work:work-runtime-ktx:${Versions.WorkManager.core}"
+        const val hilt = "androidx.hilt:hilt-work:${Versions.WorkManager.hilt}"
+        const val compiler = "androidx.hilt:hilt-compiler:${Versions.WorkManager.hilt}"
     }
 
 }

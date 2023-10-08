@@ -12,11 +12,11 @@ import io.reactivex.rxjava3.core.Observable
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertDataMovie(entity: MoviesEntity): Completable
+    suspend fun insertDataMovie(entity: MoviesEntity)
 
     @Query("SELECT * FROM MoviesEntity")
-    fun getAllPopularMovies(): Observable<List<MoviesEntity>>
+    suspend fun getAllPopularMovies(): List<MoviesEntity>
 
     @Query("DELETE FROM MoviesEntity")
-    fun deleteAllMovies(): Completable
+    suspend fun deleteAllMovies()
 }

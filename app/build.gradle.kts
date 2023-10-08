@@ -100,4 +100,12 @@ dependencies {
     // Hilt
     implementation(Dependency.Hilt.hilt)
     kapt(Dependency.Hilt.compiler)
+
+    // WorkManager
+    implementation(Dependency.WorkManager.core)
+    implementation(Dependency.WorkManager.hilt)
+    kapt(Dependency.WorkManager.compiler)
+
+    // Coroutines
+    implementation(Dependency.Coroutines.core)
 }
