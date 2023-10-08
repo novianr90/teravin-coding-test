@@ -16,3 +16,15 @@ fun MoviesEntity.toDomain(): Movie {
         releaseDate = this.releaseDate
     )
 }
+
+fun Movie.toEntity(): MoviesEntity {
+    return MoviesEntity(
+        id = this.id,
+        title = this.title,
+        originalTitle = this.originalTitle,
+        backdropPath = this.backdropPath,
+        overview = this.overview,
+        posterPath = this.posterPath,
+        releaseDate = this.releaseDate
+    )
+}
