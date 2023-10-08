@@ -66,6 +66,9 @@ dependencies {
     implementation(Dependency.Core.androidMaterial)
     implementation(Dependency.Core.constraintLayout)
     implementation(Dependency.Core.coordinatorLayout)
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.5.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Testing
     testImplementation(Dependency.UnitTest.junit)
