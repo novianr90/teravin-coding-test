@@ -10,6 +10,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import id.novian.teravin_challenge.data.dataSource.local.LocalDatabase
 import id.novian.teravin_challenge.data.dataSource.network.ApiService
+import id.novian.teravin_challenge.data.repository_impl.MovieRepositoryImpl
+import id.novian.teravin_challenge.domain.repository.MovieRepository
 import id.novian.teravin_challenge.util.Constant
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -72,6 +74,12 @@ object AppModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieRepository(localDatabase: LocalDatabase): MovieRepository {
+        return MovieRepositoryImpl(localDatabase.dao)
     }
 
 }
