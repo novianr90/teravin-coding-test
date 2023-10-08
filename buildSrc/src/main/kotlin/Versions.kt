@@ -4,7 +4,7 @@ object Versions {
         const val hiltVersion = "2.44"
         const val coreKtxVersion = "1.10.1"
         const val appCompatVersion = "1.6.1"
-        const val navigationComponentVersion = "2.7.2"
+        const val navigationComponentVersion = "2.5.3"
 
         const val constraintLayoutVersion = "2.1.4"
         const val coordinatorLayout = "1.2.0"
