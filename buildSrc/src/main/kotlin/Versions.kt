@@ -35,4 +35,9 @@ object Versions {
         const val espressoVersion = "3.5.1"
     }
 
+    object WorkManager {
+        const val core = "2.5.0"
+        const val hilt = "1.0.0"
+    }
+
 }

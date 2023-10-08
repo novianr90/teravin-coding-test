@@ -63,4 +63,10 @@ object Dependency {
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.AndroidTest.espressoVersion}"
     }
 
+    object WorkManager {
+        const val core = "androidx.work:work-runtime-ktx:${Versions.WorkManager.core}"
+        const val hilt = "androidx.hilt:hilt-work:${Versions.WorkManager.hilt}"
+        const val compiler = "androidx.hilt:hilt-compiler:${Versions.WorkManager.hilt}"
+    }
+
 }
