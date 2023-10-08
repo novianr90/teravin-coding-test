@@ -42,6 +42,10 @@ object Dependency {
         const val rxRetrofitAdapter = "com.squareup.retrofit2:adapter-rxjava3:${Versions.Core.rxJavaAdapter}"
     }
 
+    object Coroutines {
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines.core}"
+    }
+
     object Hilt {
         const val hilt = "com.google.dagger:hilt-android:${Versions.Core.hiltVersion}"
         const val compiler = "com.google.dagger:hilt-android-compiler:${Versions.Core.hiltVersion}"

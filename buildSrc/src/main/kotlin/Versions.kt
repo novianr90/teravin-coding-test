@@ -40,4 +40,8 @@ object Versions {
         const val hilt = "1.0.0"
     }
 
+    object Coroutines {
+        const val core = "1.3.9"
+    }
+
 }

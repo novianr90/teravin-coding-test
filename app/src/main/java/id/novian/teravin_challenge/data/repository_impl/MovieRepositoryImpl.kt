@@ -11,23 +11,14 @@ import io.reactivex.rxjava3.core.Observable
 class MovieRepositoryImpl(
     private val dataSourceLocal: MovieDao
 ): MovieRepository {
-    override fun getAllPopularMovies(): Observable<List<Movie>> {
-        return dataSourceLocal.getAllPopularMovies()
-            .map { movie ->
-                val mapped = movie.map {
-                    it.toDomain()
-                }
-                mapped
-            }
+    override suspend fun getAllPopularMovies(): List<Movie> {
+        return dataSourceLocal.getAllPopularMovies().map { it.toDomain() }
     }
 
-    override fun updateDataOnLocal(movie: List<Movie>): Completable {
-        return dataSourceLocal.deleteAllMovies()
-            .andThen(
-                Completable.fromAction {
-                    movie.map { it.toEntity() }
-                        .forEach { dataSourceLocal.insertDataMovie(it) }
-                }
-            )
+    override suspend fun updateDataOnLocal(movie: List<Movie>) {
+        dataSourceLocal.deleteAllMovies()
+        movie.map { it.toEntity() }
+            .forEach { dataSourceLocal.insertDataMovie(it) }
     }
+
 }

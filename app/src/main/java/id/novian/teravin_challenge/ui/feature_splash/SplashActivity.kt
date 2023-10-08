@@ -8,12 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import id.novian.teravin_challenge.MainActivity
 import id.novian.teravin_challenge.R
 import id.novian.teravin_challenge.base.BaseActivity
 import id.novian.teravin_challenge.data.dataSource.local.LocalDatabase
 import id.novian.teravin_challenge.databinding.ActivitySplashBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -44,7 +47,14 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     private fun isLocalDataEmpty(): Boolean {
-        return localDatabase.dao.getAllPopularMovies().isEmpty.blockingGet()
+
+        var existOrNot = false
+
+        lifecycleScope.launch {
+            existOrNot = localDatabase.dao.getAllPopularMovies().isEmpty()
+        }
+
+        return existOrNot
     }
 
     private fun showNetworkAndDataEmptyNotification() {
