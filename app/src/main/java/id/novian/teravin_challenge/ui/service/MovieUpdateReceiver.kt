@@ -6,12 +6,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.core.app.NotificationCompat
 
 class MovieUpdateReceiver: BroadcastReceiver() {
     override fun onReceive(p0: Context?, p1: Intent?) {
-        Log.i("receiver", "kalau ada ${p1?.action}")
         if (p1?.action == "UPDATE_COMPLETE") {
             showNotification(true, p0!!)
         }
@@ -52,6 +53,10 @@ class MovieUpdateReceiver: BroadcastReceiver() {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(NOTIFICATION_ID, notification)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            notificationManager.cancel(NOTIFICATION_ID)
+        }, 10000)
     }
 
     companion object {
