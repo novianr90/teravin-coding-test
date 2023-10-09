@@ -28,8 +28,6 @@ class MovieUpdateWorker @AssistedInject constructor(
         return try {
             val response = repo.getAllPopularMovies()
 
-            Log.i("worker", "invoked! response ${response.size}")
-
             repo.updateDataOnLocal(response)
 
             val intent = Intent("UPDATE_COMPLETE")

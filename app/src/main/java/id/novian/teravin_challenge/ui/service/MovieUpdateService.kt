@@ -34,7 +34,6 @@ class MovieUpdateService: Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         scheduleMovieUpdateWorker()
-        Log.i("service", "invoked")
         return START_STICKY
     }
 
