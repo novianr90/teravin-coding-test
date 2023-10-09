@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.feature_home.HomeFragment">
+
+   <TextView
+       android:id="@+id/tvHomeTitle"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layout_constraintTop_toTopOf="parent"
+       android:layout_marginTop="10dp"
+       android:text="Home"
+       android:gravity="center"
+       android:textSize="24sp"/>
+
+    <ProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        app:layout_constraintTop_toBottomOf="@id/tvHomeTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@android:style/Widget.Material.ProgressBar.Large" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPopularMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvHomeTitle"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:visibility="gone"
+        tools:listitem="@layout/item_movie"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
