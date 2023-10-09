@@ -4,6 +4,8 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
+import android.net.Network
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,15 +31,28 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         get() = ActivitySplashBinding::inflate
 
     override fun setup() {
-        if (!isNetworkConnected()) {
-            showNetworkUnavailableNotification()
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkCallback = object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+
+                navigateToMain()
+            }
+
+            override fun onLost(network: Network) {
+                super.onLost(network)
+
+                showNetworkUnavailableNotification()
+            }
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            connectivityManager.registerDefaultNetworkCallback(networkCallback)
         }
 
         if (!isNetworkConnected() && isLocalDataEmpty()) {
             showNetworkAndDataEmptyNotification()
         }
-
-        navigateToMain()
     }
 
     private fun isNetworkConnected(): Boolean {
